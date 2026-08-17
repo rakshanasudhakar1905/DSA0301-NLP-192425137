@@ -1,0 +1,21 @@
+def sentence_probability(sentence):
+    np_prob = {
+        "tom": 0.7,
+        "ann": 0.3
+    }
+    vp_prob = {
+        "sings": 0.4,
+        "dances": 0.6
+    }
+    words = sentence.lower().split()
+    if len(words) != 2:
+        return 0.0
+    subject = words[0]
+    verb = words[1]
+    if subject not in np_prob or verb not in vp_prob:
+        return 0.0
+    probability = 1.0 * np_prob[subject] * vp_prob[verb]
+    return probability
+sentence = input("Enter a sentence: ")
+probability = sentence_probability(sentence)
+print("Sentence Probability:", probability)
