@@ -1,0 +1,29 @@
+def parse_cfg(sentence):
+    words = sentence.lower().split()
+    if len(words) != 5:
+        return "Invalid Sentence"
+    det1, noun1, verb, det2, noun2 = words
+    if det1 not in ["the", "a"]:
+        return "Invalid Sentence"
+    if noun1 not in ["dog", "cat", "bone"]:
+        return "Invalid Sentence"
+    if verb not in ["chased", "found"]:
+        return "Invalid Sentence"
+    if det2 not in ["the", "a"]:
+        return "Invalid Sentence"
+    if noun2 not in ["dog", "cat", "bone"]:
+        return "Invalid Sentence"
+    tree = f"""
+S
+├── NP
+│   ├── Det → {det1}
+│   └── N → {noun1}
+└── VP
+    ├── V → {verb}
+    └── NP
+        ├── Det → {det2}
+        └── N → {noun2}
+"""
+    return "Valid Parse Tree:\n" + tree
+sentence = input("Enter a sentence: ")
+print(parse_cfg(sentence))
