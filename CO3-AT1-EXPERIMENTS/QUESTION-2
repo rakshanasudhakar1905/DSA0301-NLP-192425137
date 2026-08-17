@@ -1,0 +1,23 @@
+def check_agreement(subject, verb):
+    subjects = {
+        "he": {"number": "singular", "person": "third"},
+        "she": {"number": "singular", "person": "third"},
+        "it": {"number": "singular", "person": "third"},
+        "we": {"number": "plural", "person": "first"}
+    }
+    verbs = {
+        "eats": {"number": "singular"},
+        "sleeps": {"number": "singular"},
+        "eat": {"number": "plural"},
+        "sleep": {"number": "plural"}
+    }
+    if subject not in subjects or verb not in verbs:
+        return False
+    if subjects[subject]["number"] == verbs[verb]["number"]:
+        return True
+    else:
+        return False
+subject = input("Enter subject: ").lower()
+verb = input("Enter verb: ").lower()
+result = check_agreement(subject, verb)
+print("Agreement:", result)
